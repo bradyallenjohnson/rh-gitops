@@ -1,0 +1,9 @@
+apiVersion: ran.openshift.io/v1
+kind: PolicyGenTemplate
+metadata:
+  name: "smb-common-policy"
+  namespace: "smb-policies"
+spec:
+  bindingRules:
+    siteName: "smb-common-policy"
+    common: "true"
