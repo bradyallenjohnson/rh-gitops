@@ -1,0 +1,78 @@
+# secret & pull-secret need to be created under same namespace as site-config
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: "smb-clusters"
+  labels:
+    name: "smb-clusters"
+---
+apiVersion: ran.openshift.io/v1
+kind: SiteConfig
+metadata:
+  name: "smb4-nfvha06-sno"
+  namespace: "smb-clusters"
+spec:
+  baseDomain: "lab.local"
+  pullSecretRef:
+    name: "assisted-deployment-pull-secret"
+  clusterImageSetNameRef: "openshift-4.9"
+  sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIISXfxaPWTh4KJ82x4topHsc0H4i6fHtCclOq2oVHzmM tombrady@nfvpe-08"
+  clusters:
+  - clusterName: "smb4-nfvha06-sno"
+    clusterType: "sno"
+    clusterProfile: "du"
+    clusterLabels:
+      group-du-sno: ""
+      common: true
+      siteName : "smb4-nfvha06-sno"
+    # Pods receive their IP addresses from this pool
+    clusterNetwork:
+      - cidr: 10.128.0.0/14
+        hostPrefix: 24
+    # Services receive their IP addresses from this pool
+    serviceNetwork:
+      - 172.30.0.0/16
+    machineNetwork:
+      - cidr: 10.19.110.0/24
+    additionalNTPSources:
+      - 10.19.111.20
+    nodes:
+      - hostName: "smb4-nfvha06-sno.lab.local"
+        bmcAddress: "redfish-virtualmedia://[10.19.110.24]/redfish/v1/Systems/1"
+        bmcCredentialsName:
+          name: "bmc-ztp-super-micro-secret"
+        bootMACAddress: "0c:c4:7a:db:ac:04"
+        bootMode: "UEFI"
+        rootDeviceHints:
+          deviceName: "/dev/sda"
+        cpuset: "0-1,52-53"
+        ignitionConfigOverride: '{"ignition":{"version":"3.2.0"}}'
+        nodeNetwork:
+          interfaces:
+            - name: eno1
+              macAddress: "0c:c4:7a:db:ac:04"
+          config:
+            interfaces:
+              - name: eno1
+                type: ethernet
+                state: up
+                macAddress: "0c:c4:7a:db:ac:04"
+                ipv4:
+                  enabled: true
+                  address:
+                  - ip: 10.19.110.23
+                    prefix-length: 32
+                ipv6:
+                  enabled: false
+            dns-resolver:
+              config:
+                search:
+                - lab.local
+                server:
+                - 10.19.42.41
+            routes:
+              config:
+              - destination: 0.0.0.0/0
+                next-hop-interface: eno1
+                next-hop-address: 10.16.231.254
+                table-id: 254
