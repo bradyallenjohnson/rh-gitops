@@ -13,6 +13,7 @@ metadata:
   namespace: "smb-clusters"
 spec:
   baseDomain: "lab.local"
+  # The pull secret and the bmcCredentialsName must be in the same namespace as this site-config
   pullSecretRef:
     name: "assisted-deployment-pull-secret"
   clusterImageSetNameRef: "img4.9.9-x86-64-appsub"
