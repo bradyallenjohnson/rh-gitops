@@ -15,7 +15,7 @@ spec:
   baseDomain: "lab.local"
   pullSecretRef:
     name: "assisted-deployment-pull-secret"
-  clusterImageSetNameRef: "openshift-4.9"
+  clusterImageSetNameRef: "img4.9.9-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIISXfxaPWTh4KJ82x4topHsc0H4i6fHtCclOq2oVHzmM tombrady@nfvpe-08"
   clusters:
   - clusterName: "smb4-nfvha06-sno"
