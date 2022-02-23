@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: "smb-clusters"
+  name: "smb4-nfvha06-sno"
   labels:
-    name: "smb-clusters"
+    name: "smb4-nfvha06-sno"
 ---
 apiVersion: ran.openshift.io/v1
 kind: SiteConfig
 metadata:
   name: "smb4-nfvha06-sno"
-  namespace: "smb-clusters"
+  namespace: "smb4-nfvha06-sno"
 spec:
   baseDomain: "lab.local"
   # The pull secret and the bmcCredentialsName must be in the same namespace as this site-config
