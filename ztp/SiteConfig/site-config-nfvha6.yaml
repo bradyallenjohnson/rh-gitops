@@ -39,7 +39,7 @@ spec:
       - 10.19.111.20
     nodes:
       - hostName: "smb4-nfvha06-sno.lab.local"
-        bmcAddress: "redfish-virtualmedia://[10.19.110.24]/redfish/v1/Systems/1"
+        bmcAddress: "redfish-virtualmedia://10.19.110.24/redfish/v1/Systems/1"
         bmcCredentialsName:
           name: "bmc-ztp-super-micro-secret"
         bootMACAddress: "0c:c4:7a:db:ac:04"
