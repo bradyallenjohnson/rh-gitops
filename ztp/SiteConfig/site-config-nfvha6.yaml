@@ -39,15 +39,15 @@ spec:
       - 10.19.111.20
     nodes:
       - hostName: "smb4-nfvha06-sno.lab.local"
-        bmcAddress: "redfish://10.19.110.24/redfish/v1/Systems/1"
+        bmcAddress: "redfish-virtualmedia://10.19.110.24/redfish/v1/Systems/1"
         bmcCredentialsName:
           name: "bmc-ztp-super-micro-secret"
         bootMACAddress: "0c:c4:7a:db:ac:04"
         bootMode: "UEFI"
         rootDeviceHints:
           deviceName: "/dev/sda"
-        cpuset: "0-1,52-53"
-        ignitionConfigOverride: '{"ignition":{"version":"3.2.0"}}'
+        cpuset: "0-1,30-31,40-41,50-51"
+        #ignitionConfigOverride: '{"ignition":{"version":"3.2.0"}}'
         nodeNetwork:
           interfaces:
             - name: eno1
