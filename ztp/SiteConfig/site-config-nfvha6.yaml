@@ -25,6 +25,7 @@ spec:
     clusterLabels:
       group-du-sno: ""
       common: true
+      force: true
       siteName : "smb4-nfvha06-sno"
     # Pods receive their IP addresses from this pool
     clusterNetwork:
